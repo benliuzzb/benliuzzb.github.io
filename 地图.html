@@ -1,1 +1,66 @@
-d
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+		body, html{width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+		#panorama {width:100%; height: 500px;}
+		#result {width:100%;font-size:12px;}
+	</style>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=O2Cl5u72gPPl6vhGCTotU2Gupauwc7wH"></script>
+	<title>获取指定的全景图</title>
+</head>
+<body>
+	<div id="panorama"></div>
+	<div id="result">
+		<button id="setPanoramaByLocation">按经纬度展示全景</button><button id="setPanoramaById">按全景Id展示全景</button>
+	</div>
+</body>
+</html>
+<script type="text/javascript"> 
+	var map = new BMap.Map('panorama');
+	map.centerAndZoom(new BMap.Point(120.305456, 31.570037), 12);
+	map.addTileLayer(new BMap.PanoramaCoverageLayer());
+
+	var panorama = new BMap.Panorama('panorama'); 
+	panorama.setPov({heading: -40, pitch: 6});
+	document.getElementById("setPanoramaByLocation").onclick = function(){ 
+		panorama.setPosition(new BMap.Point(120.320032, 31.589666)); //根据经纬度坐标展示全景图		
+	};
+	document.getElementById("setPanoramaById").onclick = function(){ 
+		panorama.setId('0100010000130501122416015Z1');//根据全景id展示全景图
+	};
+
+
+
+	var geolocation = new BMap.Geolocation();
+	geolocation.getCurrentPosition(function(r){
+		if(this.getStatus() == BMAP_STATUS_SUCCESS){
+			var mk = new BMap.Marker(r.point);
+			map.addOverlay(mk);
+			map.panTo(r.point);
+			alert('您的位置：'+r.point.lng+','+r.point.lat);
+		}
+		else {
+			alert('failed'+this.getStatus());
+		}        
+	},{enableHighAccuracy: true})
+
+    function success(pos) {
+  var crd = pos.coords;
+
+  console.log('Your current position is:');
+  console.log('Latitude : ' + crd.latitude);
+  console.log('Longitude: ' + crd.longitude);
+  console.log('More or less ' + crd.accuracy + ' meters.');
+};
+
+function error(err) {
+  console.warn('ERROR(' + err.code + '): ' + err.message);
+};
+
+navigator.geolocation.getCurrentPosition(success, error);
+</script>
+
+

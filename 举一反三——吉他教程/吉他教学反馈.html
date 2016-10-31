@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>教学反馈</title>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	background: #FFF;
+	color: #333;
+	font:normal 12px/1.5em "宋体", Verdana, Lucida, Arial, Helvetica, sans-serif;
+}
+#main_warp {
+	margin-top:170px;
+	width:600px;
+}
+#teach_feedback {
+	width:100%;
+	padding:1px;
+	border:1px solid #CCC;
+	background-color: #FFF;
+}
+#teach_feedback h2 {
+	text-align: left;
+	font-size:25px;
+	font-family:"黑体";
+	margin:0 0 10px;
+	height:30px;
+	line-height:30px;
+	color: #FFF;
+	background-color: #693;
+} /* 定义表单标题的高度、文字样式以及背景颜色等 */
+#content {
+  /* 表单内容区域增加10px的左右内补丁，使其与表单外框产生间距 */
+	padding:0 10px;
+} /* 表单内容区域增加10px的左右内补丁，使其与表单外框产生间距 */
+#content fieldset {
+	padding-left:12px; /* 因为前面已经将表单内部所有内补丁设置为0，所以增加12px的左内补丁使表单域标题缩进 */
+	margin-top:10px;
+	border:0 none; /* 去除默认的表单域边框 */
+	border-top:1px solid #999999; /* 定义表单域上边框的样式 */
+} /* 定义表单域边框样式以及与上下几个元素之间的间距 */
+#teach_feedback label {
+	line-height:24px;
+	color:#ABABAB;
+}
+.tips {
+	padding:3px 0 0 50px;
+	color: #F00;
+}
+.buts {
+	padding:5px 0;
+	text-align:center;
+}
+</style>
+</head>
+
+<body>
+<div id="main_warp">
+  <div id="teach_feedback">
+    <h2>吉他教学反馈 </h2>
+    <div id="content">
+      <form action="" method="post" enctype="multipart/form-data">
+        <fieldset>
+          <legend>来访者信息</legend>
+          <div id="userName">
+            <label for="userName">姓　　名：</label>
+            <input name="userName" type="text" id="userName" value="" />
+          </div>
+          <div id="email">
+            <label for="email">邮  箱：</label>
+            <input name="textfield" type="text" id="email" value="@" />
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>反馈内容</legend>
+          <div id="biaoti">
+            <label>标  题:</label>
+            <input name="textarea" type="text" id="textarea" value="" size="40" maxlength="100" />
+          </div>
+          <div id="up">
+            <label>图片上传：</label>
+            <input name="tupian" type="file" id="tupian" size="40" maxlength="200" />
+            <p class="tips">只能上传.jpg、.gif、.png图片，且单张图片小于200K。</p>
+          </div>
+          <div id="neirong">
+            <label>内　　容：</label>
+            <textarea name="neirong" id="neirong" cols="50" rows="5"></textarea>
+          </div>
+        </fieldset>
+        <div class="buts">
+          <input type="submit" name="button" id="button" value="提交" />
+          <input type="reset" name="button2" id="button2" value="重置" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>
